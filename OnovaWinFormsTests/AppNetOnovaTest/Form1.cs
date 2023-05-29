@@ -1,24 +1,15 @@
-﻿using Onova;
+using Onova;
 using Onova.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace AppNetFrameworkOnovaTest
+namespace AppNetOnovaTest
 {
     public partial class Form1 : Form
     {
         private readonly IUpdateManager updateManager = new UpdateManager(
-                new GithubPackageResolver("orochasamuel", "onova-winforms-tests", "test-*.zip"),
-                new ZipPackageExtractor()
-            );
+        new GithubPackageResolver("orochasamuel", "onova-winforms-tests", "App-*.zip"),
+        new ZipPackageExtractor()
+    );
 
         string currentVersion;
 
@@ -30,14 +21,9 @@ namespace AppNetFrameworkOnovaTest
             lblCurrentVersion.Text = currentVersion;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private async void btnUpdate_Click(object sender, EventArgs e)
